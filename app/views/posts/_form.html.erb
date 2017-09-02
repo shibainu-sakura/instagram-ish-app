@@ -1,0 +1,36 @@
+<%= form_for @post, html: { multipart: true } do |f| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+ <!-- # 14/03 8 add from carrierwave -->
+  <div class="field">
+    <%= f.file_field :post_image %>
+    <%= f.hidden_field :post_image_cache %>
+  </div>
+
+
+
+ <!--  # 14/03 2 # delete this field to   automaticaly signed in  -->
+  <!-- <div class="field">
+    <%= f.label :user_id %>
+    <%= f.text_field :user_id %>
+  </div> -->
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,36 @@
+<!-- #koko ga hp no image ni hannei sareru -->
+
+<!-- @post.user => user object
+@post.user_id => 1
+  3/15 1 -->
+
+<p id="notice"><%= notice %></p>
+
+<%= @taka %>
+
+<p>
+  <strong>Description:</strong>
+  <%= @post.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @post.user.email %>
+</p>
+
+<!-- #14/03 9 -->
+<img src="<%= @post.post_image %>" alt="image">
+
+<!-- # 14/03 13 -->
+ <%= link_to 'Follow', toggle_follow_post_path(user_id: @post.user_id),
+ # 3/15 3 ----
+ class: @follow_status
+ # ----
+  %>
+  <!-- 3/15 12 -->
+<!-- <%= link_to 'like', toggle_like_post_path %>  -->
+<!-- # 3/15 14 change above like to @like_status -->
+<%= link_to @like_status, toggle_like_post_path %>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
